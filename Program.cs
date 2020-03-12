@@ -72,16 +72,30 @@ namespace GenericsIntro
 
             if (userInput == "1")
             {
+                var DVDPager = new Pager<DVD> ()
+                {
+                ItemsPerPage = 3,
+                PageNumber = 2,
+                AllItems = allMovies
+                };
+
                 // print al the DVDs
-                foreach (var movie in allMovies)
+                foreach (var movie in DVDPager.GetPage ())
                 {
                     Console.WriteLine ($"{movie.Title} -- {movie.Genre}");
                 }
             }
             else if (userInput == "2")
             {
+                var bookPager = new Pager<Book> ()
+                {
+                ItemsPerPage = 3,
+                PageNumber = 2,
+                AllItems = allBooks
+                };
+
                 // print all the Books
-                foreach (var book in allBooks)
+                foreach (var book in bookPager.GetPage ())
                 {
                     Console.WriteLine ($"{book.Title} by {book.Author}");
                 }

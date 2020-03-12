@@ -3,15 +3,15 @@ using System.Linq;
 
 namespace GenericsIntro
 {
-    public class BookPager
+    public class Pager<T>
     {
         public int ItemsPerPage { get; set; }
         public int PageNumber { get; set; }
-        public List<Book> AllItems { get; set; }
-        public List<Book> GetPage ()
+        public List<T> AllItems { get; set; }
+        public List<T> GetPage ()
         {
             return AllItems
-                .Skip (ItemsPerPage = PageNumber)
+                .Skip (ItemsPerPage * PageNumber)
                 .Take (ItemsPerPage)
                 .ToList ();
         }
